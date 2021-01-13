@@ -1,4 +1,4 @@
-from entidades import Figura
+from figura import Figura
 
 class Pelota(Figura):
 
@@ -18,3 +18,7 @@ class Palito(Figura):
             self.x += self.vx
         if self.moving_left and self.rect.left > 0:
             self.x -= self.vx
+
+if __name__ == "__main__":
+    a = Pelota(10, 10, 10, 10, (255,0,0), 20, 20)
+    print(a.altura)

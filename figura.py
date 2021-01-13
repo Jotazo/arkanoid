@@ -17,6 +17,7 @@ class Figura():
     @property
     def rect(self):
         return pg.Rect(self.x, self.y, self.anchura, self.altura)
+        
 
     def update(self):
         if self.rect.left <= 0 or self.rect.right >= 800:

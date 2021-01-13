@@ -27,7 +27,7 @@ class Game:
             pg.display.flip()
 
     def __eventos(self):
-        for event in pg.event.get():
+        for event in pg.event.get(): 
             if event.type == pg.QUIT:
                 pg.quit()
                 sys.exit()
