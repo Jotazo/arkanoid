@@ -14,8 +14,8 @@ class Bloque:
     @property
     def rect(self):
         """
-        Propiedad que devolverá oun objeto de tipo Rect
+        Propiedad que devolverá un objeto de tipo Rect
         """
-        return self.imagen.get_rect(topleft=(self.w, self.h))
+        return self.imagen.get_rect(topleft=(self.x, self.y))
 
     

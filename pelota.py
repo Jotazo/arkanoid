@@ -10,7 +10,7 @@ class Pelota:
         self.y = y
         self.vx = vx
         self.vy = vy
-
+        self.tolerancia_colision = 10
         self.imagen = pg.image.load('imagenes/red_ball.png')
 
         self.settings = settings.Settings()
@@ -24,11 +24,11 @@ class Pelota:
     @property
     def rect(self):
         """
-        Propiedad que devolverá oun objeto de tipo Rect
+        Propiedad que devolverá un objeto de tipo Rect
         """
         return self.imagen.get_rect(topleft=(self.x, self.y))
 
-    def actualizar(self, palo, dt):
+    def actualizar(self, dt):
         """
         Método que actualizará la posición de la pelota.
         En caso de que 'muriendo' sea True, mostrará la animación de '__explosion()'
@@ -37,7 +37,7 @@ class Pelota:
             return self.__explosion(dt)
         else:
             self.__actualiza_posicion()
-            self.__colision_pelota_palo(palo)
+            # self.colision_pelota_palo(palo)
 
     def __actualiza_posicion(self):
         """
@@ -56,21 +56,31 @@ class Pelota:
         self.x += self.vx
         self.y += self.vy
 
-    def __colision_pelota_palo(self, palo):
+    def colision_pelota_palo(self, palo):
         """
         Método encargado de la colisión de la pelota con el palo
         """
-        tolerancia_colision = 10
         if self.rect.colliderect(palo.rect):
-            if abs(palo.rect.top - self.rect.bottom) < tolerancia_colision and self.vy > 0:
+            if abs(palo.rect.top - self.rect.bottom) < self.tolerancia_colision and self.vy > 0:
                 self.vy *= -1
-            if abs(palo.rect.bottom - self.rect.top) < tolerancia_colision and self.vy < 0:
+            if abs(palo.rect.bottom - self.rect.top) < self.tolerancia_colision and self.vy < 0:
                 self.vy *= -1
-            if abs(palo.rect.right - self.rect.left) < tolerancia_colision and self.vx < 0:
+            if abs(palo.rect.right - self.rect.left) < self.tolerancia_colision and self.vx < 0:
                 self.vx *= -1
-            if abs(palo.rect.left - self.rect.right) < tolerancia_colision and self.vx > 0:
+            if abs(palo.rect.left - self.rect.right) < self.tolerancia_colision and self.vx > 0:
                 self.vx *= -1
 
+    def colision_pelota_bloque(self, bloque):
+        if self.rect.colliderect(bloque.rect):
+            if abs(bloque.rect.top - self.rect.bottom) < self.tolerancia_colision and self.vy > 0:
+                self.vy *= -1
+            if abs(bloque.rect.bottom - self.rect.top) < self.tolerancia_colision and self.vy < 0:
+                self.vy *= -1
+            if abs(bloque.rect.right - self.rect.left) < self.tolerancia_colision and self.vx < 0:
+                self.vx *= -1
+            if abs(bloque.rect.left - self.rect.right) < self.tolerancia_colision and self.vx > 0:
+                self.vx *= -1
+            
     def __explosion(self, dt):
         """
         Método que 'creará' la animación de la explosión cambiando la imagen

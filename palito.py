@@ -13,7 +13,7 @@ class Palito:
     @property
     def rect(self):
         """
-        Propiedad que devolverá oun objeto de tipo Rect
+        Propiedad que devolverá un objeto de tipo Rect
         """
         return self.imagen.get_rect(topleft=(self.x, self.y))
 
@@ -27,7 +27,7 @@ class Palito:
         if teclas_pulsadas[K_RIGHT] and self.rect.right <= 798:
             self.vx = 5
             self.x += self.vx
-        elif teclas_pulsadas[K_LEFT] and self.rect.left > 0:
+        elif teclas_pulsadas[K_LEFT] and self.rect.left > 1:
             self.vx = 5
             self.x -= self.vx
         else:

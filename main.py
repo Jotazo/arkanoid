@@ -13,8 +13,8 @@ class Game:
         self.fondo = pg.image.load('imagenes/background.png')
 
         # Instancias
-        self.pelota = pelota.Pelota(400, 300, 1, 1)
-        self.palito = palito.Palito(270, 550, 5)
+        self.pelota = pelota.Pelota(400, 300, 2, 2)
+        self.palito = palito.Palito(((self.settings.pantalla_width-128)/2), 550, 5)
         self.lista_obj = [self.pelota, self.palito]
         self.lista_bloques = self.__crea_bloques(self.settings.patron_bito)
         self.clock = pg.time.Clock()
@@ -23,9 +23,15 @@ class Game:
         game_over = False
         while not game_over:
             dt = self.clock.tick(self.settings.pantalla_FPS)
+
             self.__eventos()
             self.palito.moving_stick()
-            game_over = self.pelota.actualizar(self.palito, dt)
+            game_over = self.pelota.actualizar(dt)
+            self.pelota.colision_pelota_palo(self.palito)
+            if self.pelota.rect.collidelist(self.lista_bloques) != -1:
+                bloque_colisionado = self.pelota.rect.collidelist(self.lista_bloques)
+                self.pelota.colision_pelota_bloque(self.lista_bloques[bloque_colisionado])
+                self.lista_bloques.pop(bloque_colisionado)
             self.__pinta_pantalla()
             
             pg.display.flip()
@@ -48,11 +54,11 @@ class Game:
         - El grupo de bloques
         """
         self.pantalla.blit(self.fondo, (0,0))
-        self.pantalla.blit(self.pelota.imagen, (self.pelota.x,self.pelota.y))
-        self.pantalla.blit(self.palito.imagen, (self.palito.x,self.palito.y))
         for bloque in self.lista_bloques:
             self.pantalla.blit(bloque.imagen, (bloque.x,bloque.y))
-
+        self.pantalla.blit(self.pelota.imagen, (self.pelota.x,self.pelota.y))
+        self.pantalla.blit(self.palito.imagen, (self.palito.x,self.palito.y))
+        
     def __crea_bloques(self, patron):
         """
         Método semi-privado encargado de crear el grupo de bloques.
