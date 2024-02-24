@@ -70,18 +70,30 @@ export class Ball {
   }
 
   _handleWallCollitions() {
-    // Rebote paredes laterales
-    if (
-      this.x + this.speedX > this.canvas.width - this.radius ||
-      this.x + this.speedX < this.radius
-    )
-      this.changeXDirection();
+    this._handleRightWallCollition();
+    this._handleLeftWallCollition();
+    this._handleTopWallCollition();
+    this._handleBottomCollition();
+  }
 
-    // Rebote en la parte superior
-    if (this.y + this.speedY < this.radius) this.changeYDirection();
+  _handleRightWallCollition() {
+    const nextX = this.x + this.speedX;
+    if (nextX > this.canvas.width) this.changeXDirection();
+  }
 
-    // Rebote en la parte inferior
-    if (this.y + this.speedY > this.canvas.height - this.radius) {
+  _handleLeftWallCollition() {
+    const nextX = this.x + this.speedX;
+    if (nextX < 0) this.changeXDirection();
+  }
+
+  _handleTopWallCollition() {
+    const nextY = this.y + this.speedY;
+    if (nextY < 0) this.changeYDirection();
+  }
+
+  _handleBottomCollition() {
+    const nextY = this.y + this.speedY;
+    if (nextY > this.canvas.height + this.radius) {
       document.location.reload();
     }
   }
