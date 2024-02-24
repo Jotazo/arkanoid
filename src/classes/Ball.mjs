@@ -16,8 +16,8 @@ export class Ball {
     this.x = this.canvas.width / 2;
     this.y = this.canvas.height - 30;
     this.radius = BALL_CONFIG.radius;
-    this.velocityX = BALL_CONFIG.velocityX;
-    this.velocityY = BALL_CONFIG.velocityY;
+    this.speedX = BALL_CONFIG.speedX;
+    this.speedY = BALL_CONFIG.speedY;
   }
 
   draw() {
@@ -29,16 +29,16 @@ export class Ball {
   }
 
   move() {
-    this.x += this.velocityX;
-    this.y += this.velocityY;
+    this.x += this.speedX;
+    this.y += this.speedY;
   }
 
   changeXDirection() {
-    this.velocityX = -this.velocityX;
+    this.speedX = -this.speedX;
   }
 
   changeYDirection() {
-    this.velocityY = -this.velocityY;
+    this.speedY = -this.speedY;
   }
 
   handleCollitions(paddle, bricks) {
@@ -72,16 +72,16 @@ export class Ball {
   _handleWallCollitions() {
     // Rebote paredes laterales
     if (
-      this.x + this.velocityX > this.canvas.width - this.radius ||
-      this.x + this.velocityX < this.radius
+      this.x + this.speedX > this.canvas.width - this.radius ||
+      this.x + this.speedX < this.radius
     )
       this.changeXDirection();
 
     // Rebote en la parte superior
-    if (this.y + this.velocityY < this.radius) this.changeYDirection();
+    if (this.y + this.speedY < this.radius) this.changeYDirection();
 
     // Rebote en la parte inferior
-    if (this.y + this.velocityY > this.canvas.height - this.radius) {
+    if (this.y + this.speedY > this.canvas.height - this.radius) {
       document.location.reload();
     }
   }
@@ -91,7 +91,7 @@ export class Ball {
     const isBallSameXAsPaddle =
       this.x > paddle.x && this.x < paddle.x + paddle.width;
 
-    const isBallTouchingPaddle = this.y + this.velocityY > paddle.y;
+    const isBallTouchingPaddle = this.y + this.speedY > paddle.y;
 
     if (isBallSameXAsPaddle && isBallTouchingPaddle) this.changeYDirection();
   }

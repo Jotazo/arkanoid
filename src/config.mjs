@@ -7,8 +7,8 @@ export const GAME_CONFIG = {
 /* -- BALL -- */
 export const BALL_CONFIG = {
   radius: 3,
-  velocityX: 3,
-  velocityY: -3,
+  speedX: 3,
+  speedY: -3,
   color: "#fff",
 };
 
