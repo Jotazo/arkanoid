@@ -12,7 +12,6 @@ export class Brick {
    * @param {number} width
    * @param {number} height
    * @param {number} status
-   * @param {number} color
    * @param {CanvasRenderingContext2D} ctx
    * @returns {Bricks}
    */
