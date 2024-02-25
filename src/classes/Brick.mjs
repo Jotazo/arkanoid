@@ -1,31 +1,29 @@
 import { BRICK_CONFIG, BRICK_STATUS } from "../config.mjs";
 
+import { CanvasElement } from "./CanvasElement.mjs";
+
 import { redBrick } from "../assets.mjs";
 
-export class Brick {
+export class Brick extends CanvasElement {
   /**
-   * Constructor de la clase Brick
    *
    * @constructor
-   * @param {number} x
-   * @param {number} y
-   * @param {number} width
-   * @param {number} height
-   * @param {number} status
+   * @param {number} x - X position of the brick
+   * @param {number} y - Y position of the brick
+   * @param {number} width - Width of the brick
+   * @param {number} height - Height of the brick
+   * @param {number} status - Status of the brick
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLImageElement | null} sprite
-   * @returns {Bricks}
+   * @returns {Brick}
    */
   constructor(x, y, width, height, status, ctx, sprite = redBrick) {
-    this.ctx = ctx;
+    super(ctx, x, y, width, height, sprite);
 
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
+    /**
+     * @type {BRICK_STATUS} this.status - Status of the brick
+     */
     this.status = status;
-
-    this.sprite = sprite
   }
 
   draw() {
