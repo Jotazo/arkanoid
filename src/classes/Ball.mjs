@@ -1,5 +1,7 @@
 import { BALL_CONFIG } from "../config.mjs";
 
+import { ballBlue } from "../assets.mjs";
+
 export class Ball {
   /**
    * Constructor de la clase Ball
@@ -21,7 +23,7 @@ export class Ball {
     this.speedX = BALL_CONFIG.speedX;
     this.speedY = BALL_CONFIG.speedY;
 
-    this.sprite = document.querySelector("#ballBlue");
+    this.sprite = ballBlue;
   }
 
   draw() {
