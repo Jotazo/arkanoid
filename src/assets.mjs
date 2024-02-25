@@ -33,10 +33,10 @@ const yellowBrickGlossy = new Image();
 yellowBrickGlossy.src = "../assets/bricks/yellowBrickGlossy.png";
 
 const BRICKS = {
-  glossy: [greenBrick, greyBrick, purpleBrick, redBrick, yellowBrick],
-  normal: [
+  normal: [greenBrick, greyBrick, purpleBrick, redBrick, yellowBrick],
+  glossy: [
     greenBrickGlossy,
-    greenBrickGlossy,
+    greyBrickGlossy,
     purpleBrickGlossy,
     redBrickGlossy,
     yellowBrickGlossy,
