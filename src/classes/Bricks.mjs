@@ -6,16 +6,23 @@ import getRandomBrick from "../helpers/getRandomBrick.mjs";
 
 export class Bricks {
   /**
-   * Constructor de la clase Bricks
    *
    * @constructor
    * @param {CanvasRenderingContext2D} ctx
    * @returns {Bricks}
    */
-  constructor(ctx, screen) {
+  constructor(ctx) {
+    /**
+     * @prop {CanvasRenderingContext2D} this.ctx
+     */
     this.ctx = ctx;
+    /**
+     * @typedef {Brick[]} BrickColumn
+     * @typedef {BrickColumn[]} BrickGrid
+     *
+     * @type {BrickGrid}
+     */
     this.bricks = [];
-    this.screen = screen;
 
     this._generateBricks();
   }
@@ -37,10 +44,10 @@ export class Bricks {
     for (let c = 0; c < BRICKS_CONFIG.columnCount; c++) {
       this.bricks[c] = [];
       for (let r = 0; r < BRICKS_CONFIG.rowCount; r++) {
-        // Calculamos la posicion del ladrillo en la pantalla
+        // We calculate the position of the brick on the screen
         const brickX = c * BRICK_CONFIG.width + BRICKS_CONFIG.offsetLeft;
         const brickY = r * BRICK_CONFIG.height + BRICKS_CONFIG.offsetTop;
-        // Guardamos la informacion de cada ladrillo
+        // We store the information of each brick
         const randomBrick = getRandomBrick();
         this.bricks[c][r] = new Brick(
           brickX,
