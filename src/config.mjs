@@ -41,7 +41,11 @@ export const BRICK_STATUS = {
 export const PADDLE_CONFIG = {
   width: 50,
   height: 10,
-  clipX: 29,
-  clipY: 174,
   sensitivity: 7,
+  sprite: {
+    spriteXStart: 0,
+    spriteYStart: 0,
+    spriteWidth: 104,
+    spriteHeight: 24,
+  },
 };

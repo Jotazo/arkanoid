@@ -23,7 +23,7 @@ export class Paddle {
     this.clipY = PADDLE_CONFIG.clipY;
     this.sensitivity = PADDLE_CONFIG.sensitivity;
 
-    this.sprite = document.querySelector("#sprite");
+    this.sprite = document.querySelector("#paddleRed");
 
     this._keyboard = new Keyboard();
   }
@@ -31,10 +31,10 @@ export class Paddle {
   draw() {
     this.ctx.drawImage(
       this.sprite, // Imagen
-      this.clipX, // Coordenadas de recorte
-      this.clipY, // Coordenadas de recorte
-      this.width, // Tamaño recorte
-      this.height, // Tamaño recorte
+      PADDLE_CONFIG.sprite.spriteXStart, // Coordenadas de recorte
+      PADDLE_CONFIG.sprite.spriteYStart, // Coordenadas de recorte
+      PADDLE_CONFIG.sprite.spriteWidth, // Tamaño recorte
+      PADDLE_CONFIG.sprite.spriteHeight, // Tamaño recorte
       this.x, // Posicion X del dibujo
       this.y, // Posicion Y del dibujo
       this.width, // Ancho del dibujo
