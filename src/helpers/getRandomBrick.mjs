@@ -1,9 +1,9 @@
 import { BRICKS } from "../assets.mjs";
 
 /**
- * Función que retorna un bloque aleatorio
+ * Function that returns a random block
  *
- * @param {HTMLImageElement[]} bricks
+ * @param {HTMLImageElement[]?} bricks
  * @returns {HTMLImageElement}
  */
 const getRandomBrick = (bricks = BRICKS.normal) => {
