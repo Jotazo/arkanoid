@@ -13,9 +13,10 @@ export class Brick {
    * @param {number} height
    * @param {number} status
    * @param {CanvasRenderingContext2D} ctx
+   * @param {HTMLImageElement | null} sprite
    * @returns {Bricks}
    */
-  constructor(x, y, width, height, status, ctx) {
+  constructor(x, y, width, height, status, ctx, sprite = redBrick) {
     this.ctx = ctx;
 
     this.x = x;
@@ -24,7 +25,7 @@ export class Brick {
     this.height = height;
     this.status = status;
 
-    this.sprite = redBrick
+    this.sprite = sprite
   }
 
   draw() {
