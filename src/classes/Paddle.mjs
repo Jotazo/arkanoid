@@ -2,6 +2,8 @@ import { PADDLE_CONFIG } from "../config.mjs";
 
 import { Keyboard } from "./Keyboard.mjs";
 
+import { paddleRed } from "../assets.mjs";
+
 export class Paddle {
   /**
    * Constructor de la clase Paddle
@@ -23,7 +25,7 @@ export class Paddle {
     this.clipY = PADDLE_CONFIG.clipY;
     this.sensitivity = PADDLE_CONFIG.sensitivity;
 
-    this.sprite = document.querySelector("#paddleRed");
+    this.sprite = paddleRed;
 
     this._keyboard = new Keyboard();
   }
