@@ -1,12 +1,12 @@
 import { PADDLE_CONFIG } from "../config.mjs";
 
+import { CanvasElement } from "./CanvasElement.mjs";
 import { Keyboard } from "./Keyboard.mjs";
 
 import { paddleRed } from "../assets.mjs";
 
-export class Paddle {
+export class Paddle extends CanvasElement {
   /**
-   * Constructor de la clase Paddle
    *
    * @constructor
    * @param {HTMLCanvasElement} canvas
@@ -14,19 +14,26 @@ export class Paddle {
    * @returns {Paddle}
    */
   constructor(canvas, ctx) {
+    super(
+      ctx,
+      (canvas.width - PADDLE_CONFIG.width) / 2,
+      canvas.height - PADDLE_CONFIG.height - 10,
+      PADDLE_CONFIG.width,
+      PADDLE_CONFIG.height,
+      paddleRed
+    );
+
+    /**
+     * @prop {HTMLCanvasElement} this.canvas
+     */
     this.canvas = canvas;
-    this.ctx = ctx;
-
-    this.width = PADDLE_CONFIG.width;
-    this.height = PADDLE_CONFIG.height;
-    this.x = (this.canvas.width - this.width) / 2;
-    this.y = this.canvas.height - this.height - 10;
-    this.clipX = PADDLE_CONFIG.clipX;
-    this.clipY = PADDLE_CONFIG.clipY;
+    /**
+     * @prop {number} this.sensitivity
+     */
     this.sensitivity = PADDLE_CONFIG.sensitivity;
-
-    this.sprite = paddleRed;
-
+    /**
+     * @prop {Keyboard} this._keyboard
+     */
     this._keyboard = new Keyboard();
   }
 
@@ -48,7 +55,7 @@ export class Paddle {
     const isRightPressed = this._keyboard.getRightPressed();
     const isLeftPressed = this._keyboard.getLeftPressed();
 
-    if (isRightPressed && this.x < this.canvas.width - this.width) {
+    if (isRightPressed && this.x + this.width < this.canvas.width) {
       this._moveRight();
     } else if (isLeftPressed && this.x > 0) {
       this._moveLeft();
