@@ -1,5 +1,8 @@
-import { Brick } from "./Brick.mjs";
 import { BRICKS_CONFIG, BRICK_CONFIG, BRICK_STATUS } from "../config.mjs";
+
+import { Brick } from "./Brick.mjs";
+
+import getRandomBrick from "../helpers/getRandomBrick.mjs";
 
 export class Bricks {
   /**
@@ -38,13 +41,15 @@ export class Bricks {
         const brickX = c * BRICK_CONFIG.width + BRICKS_CONFIG.offsetLeft;
         const brickY = r * BRICK_CONFIG.height + BRICKS_CONFIG.offsetTop;
         // Guardamos la informacion de cada ladrillo
+        const randomBrick = getRandomBrick();
         this.bricks[c][r] = new Brick(
           brickX,
           brickY,
           BRICK_CONFIG.width,
           BRICK_CONFIG.height,
           BRICK_STATUS.ACTIVE,
-          this.ctx
+          this.ctx,
+          randomBrick
         );
       }
     }
