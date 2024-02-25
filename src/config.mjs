@@ -9,7 +9,14 @@ export const BALL_CONFIG = {
   radius: 3,
   speedX: 3,
   speedY: -3,
-  color: "#fff",
+  sprite: {
+    spriteXStart: 0,
+    spriteYStart: 0,
+    spriteWidth: 22,
+    spriteHeight: 22,
+  },
+  height: 8,
+  width: 8,
 };
 
 /* -- BRICKS -- */

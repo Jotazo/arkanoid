@@ -15,17 +15,28 @@ export class Ball {
 
     this.x = this.canvas.width / 2;
     this.y = this.canvas.height - 30;
+
+    this.width = BALL_CONFIG.width;
+    this.height = BALL_CONFIG.height;
     this.radius = BALL_CONFIG.radius;
     this.speedX = BALL_CONFIG.speedX;
     this.speedY = BALL_CONFIG.speedY;
+
+    this.sprite = document.querySelector("#ballBlue");
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    this.ctx.fillStyle = BALL_CONFIG.color;
-    this.ctx.fill();
-    this.ctx.closePath();
+    this.ctx.drawImage(
+      this.sprite,
+      BALL_CONFIG.sprite.spriteXStart,
+      BALL_CONFIG.sprite.spriteYStart,
+      BALL_CONFIG.sprite.spriteWidth,
+      BALL_CONFIG.sprite.spriteHeight,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
   }
 
   move() {
