@@ -1,29 +1,44 @@
 import { BALL_CONFIG } from "../config.mjs";
 
+import { CanvasElement } from "./CanvasElement.mjs";
+import { Paddle } from "./Paddle.mjs";
+import { Bricks } from "./Bricks.mjs";
+
 import { ballBlue } from "../assets.mjs";
 
-export class Ball {
+/**
+ * @extends CanvasElement
+ */
+export class Ball extends CanvasElement {
   /**
-   * Constructor de la clase Ball
    *
    * @constructor
-   * @param {HTMLCanvasElement} canvas
    * @param {CanvasRenderingContext2D} ctx
+   * @param {HTMLCanvasElement} canvas
    * @returns {Ball}
    */
-  constructor(canvas, ctx) {
+  constructor(ctx, canvas) {
+    super(
+      ctx,
+      canvas.width / 2,
+      canvas.height - 30,
+      BALL_CONFIG.width,
+      BALL_CONFIG.height,
+      ballBlue
+    );
+
+    /**
+     * @prop {HTMLCanvasElement} this.canvas
+     */
     this.canvas = canvas;
-    this.ctx = ctx;
-
-    this.x = this.canvas.width / 2;
-    this.y = this.canvas.height - 30;
-
-    this.width = BALL_CONFIG.width;
-    this.height = BALL_CONFIG.height;
+    /**
+     * @prop {number} this.speedX - Speed on the X-axis of the ball
+     */
     this.speedX = BALL_CONFIG.speedX;
+    /**
+     * @prop {number} this.speedY - Speed on the Y-axis of the ball
+     */
     this.speedY = BALL_CONFIG.speedY;
-
-    this.sprite = ballBlue;
   }
 
   draw() {
@@ -53,6 +68,13 @@ export class Ball {
     this.speedY = -this.speedY;
   }
 
+  /**
+   * Ball collisions handling function
+   *
+   * @param {Paddle} paddle
+   * @param {Bricks} bricks
+   * @returns {void}
+   */
   handleCollitions(paddle, bricks) {
     this._handleBricksCollition(bricks);
     this._handleWallCollitions();
@@ -64,7 +86,6 @@ export class Ball {
       for (const currentBrick of brickColumn) {
         if (currentBrick.isDestroyed()) continue;
 
-        // La pelota toca la pala
         const isBallSameXAsBrick =
           this.x > currentBrick.x &&
           this.x < currentBrick.x + currentBrick.width;
@@ -111,7 +132,6 @@ export class Ball {
   }
 
   _handlePaddleCollitions(paddle) {
-    // la pelota toca la pala
     const isBallSameXAsPaddle =
       this.x > paddle.x && this.x < paddle.x + paddle.width;
 

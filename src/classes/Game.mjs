@@ -1,5 +1,4 @@
 import { GAME_CONFIG } from "../config.mjs";
-import { MIDU_SCREEN } from "../screens.mjs";
 
 import { Ball } from "./Ball.mjs";
 import { Bricks } from "./Bricks.mjs";
@@ -13,9 +12,9 @@ export class Game {
     this.canvas.width = GAME_CONFIG.width;
     this.canvas.height = GAME_CONFIG.height;
 
-    this.ball = new Ball(this.canvas, this.ctx);
+    this.ball = new Ball(this.ctx, this.canvas);
     this.paddle = new Paddle(this.canvas, this.ctx);
-    this.bricks = new Bricks(this.ctx, MIDU_SCREEN);
+    this.bricks = new Bricks(this.ctx);
   }
 
   start() {
