@@ -1,58 +1,58 @@
 /**
- * Configuración del canvas
+ * Canvas configuration
  *
  * @typedef {Object} GameConfig
- * @property {number} width - Ancho del canvas
- * @property {number} height - Alto del canvas
+ * @property {number} width - Canvas width
+ * @property {number} height - Canvas height
  */
 
 /**
- * Configuración de los Sprite
+ * Sprite configuration
  *
  * @typedef {Object} SpriteConfig
- * @property {number} xStart - Posición x inicial del sprite
- * @property {number} yStart - Posición y inicial del sprite
- * @property {number} width - Ancho del sprite
- * @property {number} height - Alto del sprite
+ * @property {number} xStart - Initial x position of the sprite
+ * @property {number} yStart - Initial y position of the sprite
+ * @property {number} width - Sprite width
+ * @property {number} height - Sprite height
  */
 
 /**
- * Configuración de la pelota
+ * Ball configuration
  *
  * @typedef {Object} BallConfig
- * @property {number} width - Ancho de la pelota
- * @property {number} height - Alto de la pelota
- * @property {number} speedX - Velocidad en el eje X de la pelota
- * @property {number} speedY - Velocidad en el eje Y de la pelota
+ * @property {number} width - Ball width
+ * @property {number} height - Ball height
+ * @property {number} speedX - Speed on the X axis of the ball
+ * @property {number} speedY - Speed on the Y axis of the ball
  * @property {SpriteConfig} sprite
  */
 
 /**
- * Configuración del listado de bloques
+ * Configuration of the brick list
  * 
  * @typedef {Object} BricksConfig
- * @property {number} rowCount - Numero de filas
- * @property {number} columnCount - Numero de columnas
- * @property {number} offsetTop - Padding superior
- * @property {number} offsetLeft - Padding izquierdo
+ * @property {number} rowCount - Number of rows
+ * @property {number} columnCount - Number of columns
+ * @property {number} offsetTop - Top padding
+ * @property {number} offsetLeft - Left padding
  */
 
 /**
- * Configuración de los bloques
+ * Configuration of the bricks
  * 
  * @typedef {Object} BrickConfig
- * @property {number} width - Ancho del bloque
- * @property {number} height - Alto del bloque
+ * @property {number} width - Brick width
+ * @property {number} height - Brick height
  * @property {SpriteConfig} sprite
  */
 
 /**
- * Configuración del paddle
+ * Paddle configuration
  * 
  * @typedef {Object} PaddleConfig
- * @property {number} width - Ancho del paddle
- * @property {number} height - Alto del paddle
- * @property {number} sensitivity - Sensibilidad del movimiento del paddle
+ * @property {number} width - Paddle width
+ * @property {number} height - Paddle height
+ * @property {number} sensitivity - Sensitivity of paddle movement
  * @property {SpriteConfig} sprite
  */
 
@@ -108,7 +108,7 @@ export const BRICK_CONFIG = {
 };
 
 /**
- * Estados de los bloques
+ * Brick states
  *
  * @enum {number}
  */
