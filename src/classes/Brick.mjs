@@ -1,4 +1,6 @@
-import { BRICK_STATUS } from "../config.mjs";
+import { BRICK_CONFIG, BRICK_STATUS } from "../config.mjs";
+
+import { redBrick } from "../assets.mjs";
 
 export class Brick {
   /**
@@ -14,7 +16,7 @@ export class Brick {
    * @param {CanvasRenderingContext2D} ctx
    * @returns {Bricks}
    */
-  constructor(x, y, width, height, status, color, ctx) {
+  constructor(x, y, width, height, status, ctx) {
     this.ctx = ctx;
 
     this.x = x;
@@ -22,20 +24,17 @@ export class Brick {
     this.width = width;
     this.height = height;
     this.status = status;
-    this.color = color;
 
-    this.sprite = document.querySelector("#bricks");
+    this.sprite = redBrick
   }
 
   draw() {
-    const clipX = this.color * 32;
-
     this.ctx.drawImage(
       this.sprite,
-      clipX,
-      0,
-      this.width,
-      this.height,
+      BRICK_CONFIG.sprite.xStart,
+      BRICK_CONFIG.sprite.yStart,
+      BRICK_CONFIG.sprite.width,
+      BRICK_CONFIG.sprite.height,
       this.x,
       this.y,
       this.width,

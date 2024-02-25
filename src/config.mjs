@@ -43,6 +43,7 @@
  * @typedef {Object} BrickConfig
  * @property {number} width - Ancho del bloque
  * @property {number} height - Alto del bloque
+ * @property {SpriteConfig} sprite
  */
 
 /**
@@ -69,8 +70,8 @@ export const GAME_CONFIG = {
  * @type {BallConfig}
  */
 export const BALL_CONFIG = {
-  width: 8,
-  height: 8,
+  width: 10,
+  height: 10,
   speedX: 3,
   speedY: -3,
   sprite: {
@@ -98,6 +99,12 @@ export const BRICKS_CONFIG = {
 export const BRICK_CONFIG = {
   width: 32,
   height: 16,
+  sprite: {
+    xStart: 0,
+    yStart: 0,
+    width: 64,
+    height: 32,
+  },
 };
 
 /**
@@ -115,7 +122,7 @@ export const BRICK_STATUS = {
  * @type {PaddleConfig}
  */
 export const PADDLE_CONFIG = {
-  width: 50,
+  width: 65,
   height: 10,
   sensitivity: 7,
   sprite: {
