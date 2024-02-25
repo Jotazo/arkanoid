@@ -18,7 +18,6 @@ export class Ball {
 
     this.width = BALL_CONFIG.width;
     this.height = BALL_CONFIG.height;
-    this.radius = BALL_CONFIG.radius;
     this.speedX = BALL_CONFIG.speedX;
     this.speedY = BALL_CONFIG.speedY;
 
@@ -28,10 +27,10 @@ export class Ball {
   draw() {
     this.ctx.drawImage(
       this.sprite,
-      BALL_CONFIG.sprite.spriteXStart,
-      BALL_CONFIG.sprite.spriteYStart,
-      BALL_CONFIG.sprite.spriteWidth,
-      BALL_CONFIG.sprite.spriteHeight,
+      BALL_CONFIG.sprite.xStart,
+      BALL_CONFIG.sprite.yStart,
+      BALL_CONFIG.sprite.width,
+      BALL_CONFIG.sprite.height,
       this.x,
       this.y,
       this.width,
@@ -104,7 +103,7 @@ export class Ball {
 
   _handleBottomCollition() {
     const nextY = this.y + this.speedY;
-    if (nextY > this.canvas.height + this.radius) {
+    if (nextY > this.canvas.height) {
       document.location.reload();
     }
   }

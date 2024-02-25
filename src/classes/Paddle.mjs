@@ -30,15 +30,15 @@ export class Paddle {
 
   draw() {
     this.ctx.drawImage(
-      this.sprite, // Imagen
-      PADDLE_CONFIG.sprite.spriteXStart, // Coordenadas de recorte
-      PADDLE_CONFIG.sprite.spriteYStart, // Coordenadas de recorte
-      PADDLE_CONFIG.sprite.spriteWidth, // Tamaño recorte
-      PADDLE_CONFIG.sprite.spriteHeight, // Tamaño recorte
-      this.x, // Posicion X del dibujo
-      this.y, // Posicion Y del dibujo
-      this.width, // Ancho del dibujo
-      this.height // Alto del dibujo
+      this.sprite,
+      PADDLE_CONFIG.sprite.xStart,
+      PADDLE_CONFIG.sprite.yStart,
+      PADDLE_CONFIG.sprite.width,
+      PADDLE_CONFIG.sprite.height,
+      this.x,
+      this.y,
+      this.width,
+      this.height
     );
   }
 

@@ -36,10 +36,10 @@ export class Bricks {
       for (let r = 0; r < BRICKS_CONFIG.rowCount; r++) {
         // Calculamos la posicion del ladrillo en la pantalla
         const brickX =
-          c * (BRICK_CONFIG.width + BRICKS_CONFIG.padding) +
+          c * (BRICK_CONFIG.width) +
           BRICKS_CONFIG.offsetLeft;
         const brickY =
-          r * (BRICK_CONFIG.height + BRICKS_CONFIG.padding) +
+          r * (BRICK_CONFIG.height) +
           BRICKS_CONFIG.offsetTop;
         // Asignar un color aleatorio al ladrillo
         const brickColor = Math.floor(Math.random() * 8);
